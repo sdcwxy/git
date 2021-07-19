@@ -168,6 +168,7 @@ static void clean_tracked_sparse_directories(struct repository *r)
 	 * integrated with the sparse-index yet, so we need to keep
 	 * it full during the process.
 	 */
+	trace2_printf("%s", __func__);
 	ensure_full_index(r->index);
 }
 

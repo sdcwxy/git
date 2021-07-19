@@ -524,6 +524,7 @@ static struct string_list *get_unmerged(struct index_state *istate)
 	unmerged->strdup_strings = 1;
 
 	/* TODO: audit for interaction with sparse-index. */
+	trace2_printf("%s", __func__);
 	ensure_full_index(istate);
 	for (i = 0; i < istate->cache_nr; i++) {
 		struct string_list_item *item;

@@ -586,6 +586,7 @@ static int run_dir_diff(const char *extcmd, int symlinks, const char *prefix,
 	rc = run_command_v_opt(helper_argv, flags);
 
 	/* TODO: audit for interaction with sparse-index. */
+	trace2_printf("%s", __func__);
 	ensure_full_index(&wtindex);
 
 	/*

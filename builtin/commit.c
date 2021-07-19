@@ -378,6 +378,7 @@ static int list_paths(struct string_list *list, const char *with_tree,
 	}
 
 	/* TODO: audit for interaction with sparse-index. */
+	trace2_printf("%s", __func__);
 	ensure_full_index(&the_index);
 	for (i = 0; i < active_nr; i++) {
 		const struct cache_entry *ce = active_cache[i];
@@ -1095,6 +1096,7 @@ static int prepare_to_commit(const char *index_file, const char *prefix,
 			int i, ita_nr = 0;
 
 			/* TODO: audit for interaction with sparse-index. */
+			trace2_printf("%s", __func__);
 			ensure_full_index(&the_index);
 			for (i = 0; i < active_nr; i++)
 				if (ce_intent_to_add(active_cache[i]))

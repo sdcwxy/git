@@ -60,6 +60,7 @@ static void merge_all(void)
 {
 	int i;
 	/* TODO: audit for interaction with sparse-index. */
+	trace2_printf("%s", __func__);
 	ensure_full_index(&the_index);
 	for (i = 0; i < active_nr; i++) {
 		const struct cache_entry *ce = active_cache[i];
@@ -86,6 +87,7 @@ int cmd_merge_index(int argc, const char **argv, const char *prefix)
 	read_cache();
 
 	/* TODO: audit for interaction with sparse-index. */
+	trace2_printf("%s", __func__);
 	ensure_full_index(&the_index);
 
 	i = 1;

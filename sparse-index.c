@@ -375,6 +375,7 @@ void expand_to_path(struct index_state *istate,
 			 * in the index, perhaps it exists within this
 			 * sparse-directory.  Expand accordingly.
 			 */
+			trace2_printf("%s path_mutable: %s", __func__, path_mutable.buf);
 			ensure_full_index(istate);
 			break;
 		}

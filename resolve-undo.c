@@ -173,6 +173,7 @@ void unmerge_marked_index(struct index_state *istate)
 		return;
 
 	/* TODO: audit for interaction with sparse-index. */
+	trace2_printf("%s", __func__);
 	ensure_full_index(istate);
 	for (i = 0; i < istate->cache_nr; i++) {
 		const struct cache_entry *ce = istate->cache[i];
@@ -189,6 +190,7 @@ void unmerge_index(struct index_state *istate, const struct pathspec *pathspec)
 		return;
 
 	/* TODO: audit for interaction with sparse-index. */
+	trace2_printf("%s", __func__);
 	ensure_full_index(istate);
 	for (i = 0; i < istate->cache_nr; i++) {
 		const struct cache_entry *ce = istate->cache[i];

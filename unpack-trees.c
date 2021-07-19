@@ -1756,6 +1756,7 @@ int unpack_trees(unsigned len, struct tree_desc *t, struct unpack_trees_options 
 
 	prepare_repo_settings(repo);
 	if (repo->settings.command_requires_full_index) {
+		trace2_printf("%s", __func__);
 		ensure_full_index(o->src_index);
 		ensure_full_index(o->dst_index);
 	}

@@ -425,6 +425,7 @@ static void mark_colliding_entries(const struct checkout *state,
 	ce->ce_flags |= CE_MATCHED;
 
 	/* TODO: audit for interaction with sparse-index. */
+	trace2_printf("%s ce: %s", __func__, ce->name);
 	ensure_full_index(state->istate);
 	for (i = 0; i < state->istate->cache_nr; i++) {
 		struct cache_entry *dup = state->istate->cache[i];

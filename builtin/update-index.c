@@ -747,6 +747,7 @@ static int do_reupdate(int ac, const char **av,
 		has_head = 0;
  redo:
 	/* TODO: audit for interaction with sparse-index. */
+	trace2_printf("%s", __func__);
 	ensure_full_index(&the_index);
 	for (pos = 0; pos < active_nr; pos++) {
 		const struct cache_entry *ce = active_cache[pos];

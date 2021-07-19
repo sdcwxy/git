@@ -505,6 +505,7 @@ static int grep_cache(struct grep_opt *opt,
 		die(_("index file corrupt"));
 
 	/* TODO: audit for interaction with sparse-index. */
+	trace2_printf("%s", __func__);
 	ensure_full_index(repo->index);
 	for (nr = 0; nr < repo->index->cache_nr; nr++) {
 		const struct cache_entry *ce = repo->index->cache[nr];

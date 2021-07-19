@@ -883,6 +883,7 @@ int cmd_fsck(int argc, const char **argv, const char *prefix)
 		verify_ce_order = 1;
 		read_cache();
 		/* TODO: audit for interaction with sparse-index. */
+		trace2_printf("%s", __func__);
 		ensure_full_index(&the_index);
 		for (i = 0; i < active_nr; i++) {
 			unsigned int mode;

@@ -596,6 +596,7 @@ static int index_name_stage_pos(struct index_state *istate, const char *name, in
 		if (S_ISSPARSEDIR(ce->ce_mode) &&
 		    ce_namelen(ce) < namelen &&
 		    !strncmp(name, ce->name, ce_namelen(ce))) {
+			trace2_printf("%s ce: %s", __func__, ce->name);
 			ensure_full_index(istate);
 			return index_name_stage_pos(istate, name, namelen, stage);
 		}
@@ -2364,8 +2365,10 @@ int do_read_index(struct index_state *istate, const char *path, int must_exist)
 	if (!istate->repo)
 		istate->repo = the_repository;
 	prepare_repo_settings(istate->repo);
-	if (istate->repo->settings.command_requires_full_index)
+	if (istate->repo->settings.command_requires_full_index) {
+		trace2_printf("%s", __func__);
 		ensure_full_index(istate);
+	}
 
 	return istate->cache_nr;
 
@@ -2552,6 +2555,7 @@ int repo_index_has_changes(struct repository *repo,
 		return opt.flags.has_changes != 0;
 	} else {
 		/* TODO: audit for interaction with sparse-index. */
+		trace2_printf("%s", __func__);
 		ensure_full_index(istate);
 		for (i = 0; sb && i < istate->cache_nr; i++) {
 			if (i)
@@ -3198,8 +3202,10 @@ static int do_write_locked_index(struct index_state *istate, struct lock_file *l
 	trace2_region_leave_printf("index", "do_write_index", the_repository,
 				   "%s", get_lock_file_path(lock));
 
-	if (was_full)
+	if (was_full) {
+		trace2_printf("%s", __func__);
 		ensure_full_index(istate);
+	}
 
 	if (ret)
 		return ret;
@@ -3302,8 +3308,10 @@ static int write_shared_index(struct index_state *istate,
 	trace2_region_leave_printf("index", "shared/do_write_index",
 				   the_repository, "%s", get_tempfile_path(*temp));
 
-	if (was_full)
+	if (was_full) {
+		trace2_printf("%s", __func__);
 		ensure_full_index(istate);
+	}
 
 	if (ret)
 		return ret;
