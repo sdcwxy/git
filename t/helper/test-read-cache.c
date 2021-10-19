@@ -39,6 +39,7 @@ int cmd__read_cache(int argc, const char **argv)
 	int table = 0, expand = 0;
 
 	initialize_the_repository();
+	setup_git_directory();
 	prepare_repo_settings(r);
 	r->settings.command_requires_full_index = 0;
 
@@ -53,7 +54,6 @@ int cmd__read_cache(int argc, const char **argv)
 
 	if (argc == 1)
 		cnt = strtol(argv[0], NULL, 0);
-	setup_git_directory();
 	git_config(git_default_config, NULL);
 
 	for (i = 0; i < cnt; i++) {
