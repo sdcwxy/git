@@ -116,9 +116,9 @@ void prepare_repo_settings(struct repository *r)
 	r->settings.command_requires_full_index = 1;
 
 	/*
-	 * Initialize this as on.
+	 * Initialize this as off.
 	 */
-	r->settings.sparse_index = 1;
-	if (!repo_config_get_bool(r, "index.sparse", &value) && !value)
-		r->settings.sparse_index = 0;
+	r->settings.sparse_index = 0;
+	if (!repo_config_get_bool(r, "index.sparse", &value) && value)
+		r->settings.sparse_index = 1;
 }

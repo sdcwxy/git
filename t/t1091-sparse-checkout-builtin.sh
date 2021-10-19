@@ -215,7 +215,7 @@ test_expect_success 'sparse-index enabled and disabled' '
 	test-tool -C repo read-cache --table >cache &&
 	! grep " tree " cache &&
 	git -C repo config --list >config &&
-	test_cmp_config -C repo false index.sparse
+	! grep index.sparse config
 '
 
 test_expect_success 'cone mode: init and set' '
