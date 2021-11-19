@@ -404,6 +404,8 @@ static void fsevent_callback(ConstFSEventStreamRef streamRef,
 	}
 
 	fsmonitor_publish(state, batch, &cookie_list);
+	/* sleep for 10ms */
+	usleep(10 * 1000);
 	string_list_clear(&cookie_list, 0);
 	strbuf_release(&tmp);
 	return;
