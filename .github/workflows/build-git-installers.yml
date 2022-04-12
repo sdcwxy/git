@@ -67,7 +67,7 @@ jobs:
           git config --global user.name "$USER_NAME" &&
           git config --global user.email "$USER_EMAIL" &&
           echo "PACKAGER=$USER_NAME <$USER_EMAIL>" >>$GITHUB_ENV
-      - uses: git-for-windows/setup-git-for-windows-sdk@v1
+      - uses: git-for-windows/setup-git-for-windows-sdk@v1.1.2
         with:
           flavor: build-installers
       - name: Clone build-extra
