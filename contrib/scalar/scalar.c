@@ -856,7 +856,7 @@ static int cmd_clone(int argc, const char **argv)
 	char *cache_key = NULL, *shared_cache_path = NULL;
 	struct strbuf buf = STRBUF_INIT;
 	int res;
-	int gvfs_protocol;
+	int gvfs_protocol = 0;
 
 	argc = parse_options(argc, argv, NULL, clone_options, clone_usage, 0);
 
@@ -985,9 +985,10 @@ static int cmd_clone(int argc, const char **argv)
 		goto cleanup;
 	}
 
-	gvfs_protocol = cache_server_url ||
-			supports_gvfs_protocol(url, &default_cache_server_url);
-
+	/*
+	*gvfs_protocol = cache_server_url ||
+	*		supports_gvfs_protocol(url, &default_cache_server_url);
+	*/
 	if (gvfs_protocol) {
 		if (!cache_server_url)
 			cache_server_url = default_cache_server_url;
