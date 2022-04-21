@@ -986,7 +986,6 @@ static int cmd_clone(int argc, const char **argv)
 	}
 
 	gvfs_protocol = 0;
-	
 	/*
 	*gvfs_protocol = cache_server_url ||
 	*		supports_gvfs_protocol(url, &default_cache_server_url);
